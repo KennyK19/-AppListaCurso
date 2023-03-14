@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Aplicativo Lista VIP Curso Android"
+        android:text="@string/txt_title"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -32,12 +32,13 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Primeiro nome"
+        android:hint="@string/txt_firstName"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/edtLastName"
@@ -48,7 +49,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Sobrenome"
+        android:hint="@string/txt_lastName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,14 +64,14 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Nome do Curso Desejado"
+        android:hint="@string/txt_course"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtLastName" />
 
     <EditText
-        android:id="@+id/edtPhone"
+        android:id="@+id/edtPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -78,7 +79,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:hint="Telefone de contato"
+        android:hint="@string/txt_contactNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,11 +91,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Limpar"
+        android:text="@string/txt_clean"
         android:background="@color/corBotoes"
         app:layout_constraintBottom_toTopOf="@+id/btnFinish"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
 
     <Button
         android:id="@+id/btnSave"
@@ -102,13 +103,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:text="Salvar"
+        android:text="@string/txt_save"
         android:background="@color/corBotoes"
         app:layout_constraintBottom_toTopOf="@+id/btnFinish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.984"
         app:layout_constraintStart_toEndOf="@+id/btnClean"
-        app:layout_constraintTop_toBottomOf="@+id/edtPhone"
+        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -119,7 +120,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Finalizar"
+        android:text="@string/txt_finish"
         android:background="@color/corBotoes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
