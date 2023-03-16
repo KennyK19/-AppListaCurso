@@ -1,5 +1,6 @@
 package devandroid.mesquita.applistacurso.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,9 @@ import devandroid.mesquita.applistacurso.controller.PessoaController;
 import devandroid.mesquita.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "pref_listavip";
 
     PessoaController controller;
 
@@ -34,9 +38,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        preferences = getSharedPreferences(NOME_PREFERENCES,0);
+        SharedPreferences.Editor listaVIP = preferences.edit();
+
         controller = new PessoaController();
+        controller.toString();
 
         pessoa = new Pessoa();
+        pessoa.setPrimeiroNome("Kenny");
+        pessoa.setSobreNome("Mesquita");
+        pessoa.setCursoDesejado("Android");
+        pessoa.setTelefoneContato("21-98642380");
 
         outraPessoa = new Pessoa();
         outraPessoa.setPrimeiroNome("Luiz");
@@ -53,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
-        editPrimeiroNome.setText(pessoa.getPrimeiroNome());
-        editSobreNomeAluno.setText(pessoa.getSobreNome());
-        editNomeCurso.setText(pessoa.getCursoDesejado());
-        editTelefoneContato.setText(pessoa.getTelefoneContato());
+        editPrimeiroNome.setText(outraPessoa.getPrimeiroNome());
+        editSobreNomeAluno.setText(outraPessoa.getSobreNome());
+        editNomeCurso.setText(outraPessoa.getCursoDesejado());
+        editTelefoneContato.setText(outraPessoa.getTelefoneContato());
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setCursoDesejado(editNomeCurso.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+                listaVIP.putString("primeiroNome",pessoa.getPrimeiroNome());
+                listaVIP.putString("sobreNome",pessoa.getSobreNome());
+                listaVIP.putString("TelefoneContato",pessoa.getTelefoneContato());
+                listaVIP.putString("CursoDesejado",pessoa.getCursoDesejado());
+                listaVIP.apply();
 
                 controller.salvar(pessoa);
             }
