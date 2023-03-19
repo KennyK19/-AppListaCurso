@@ -16,11 +16,6 @@ import devandroid.mesquita.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor listaVIP;
-
-    public static final String NOME_PREFERENCES = "pref_listavip";
-
     PessoaController controller;
 
     Pessoa pessoa;
@@ -40,17 +35,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferences = getSharedPreferences(NOME_PREFERENCES,0);
-        listaVIP = preferences.edit();
-
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
         controller.toString();
 
         pessoa = new Pessoa();
-        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
-        pessoa.setSobreNome(preferences.getString("sobreNome", ""));
-        pessoa.setCursoDesejado(preferences.getString("CursoDesejado", ""));
-        pessoa.setTelefoneContato(preferences.getString("TelefoneContato", ""));
+        controller.buscar(pessoa);
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobreNomeAluno = findViewById(R.id.editSobreNomeAluno);
@@ -74,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 editTelefoneContato.setText("");
                 editNomeCurso.setText("");
 
-                listaVIP.clear();
-                listaVIP.apply();
+                controller.limpar();
 
             }
         });
@@ -99,11 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                listaVIP.putString("primeiroNome",pessoa.getPrimeiroNome());
-                listaVIP.putString("sobreNome",pessoa.getSobreNome());
-                listaVIP.putString("TelefoneContato",pessoa.getTelefoneContato());
-                listaVIP.putString("CursoDesejado",pessoa.getCursoDesejado());
-                listaVIP.apply();
 
                 controller.salvar(pessoa);
             }
