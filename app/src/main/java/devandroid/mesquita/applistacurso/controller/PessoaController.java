@@ -20,11 +20,6 @@ public class PessoaController {
         listaVIP = preferences.edit();
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 
     public void salvar(Pessoa pessoa) {
         Log.i("MVC_Controller", "Salvo"+pessoa.toString());
@@ -48,8 +43,15 @@ public class PessoaController {
     }
 
     public void limpar (){
+
         listaVIP.clear();
         listaVIP.apply();
 
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
